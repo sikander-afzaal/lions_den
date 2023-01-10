@@ -10,7 +10,7 @@
     @apply flex w-full max-w-[90%] 2xl:max-w-[1400px];
   }
   .title {
-    @apply text-black text-[40px] md:text-[52px] font-bold;
+    @apply text-black text-[35px] md:text-[52px] font-bold;
   }
   .sub {
     @apply text-black text-base md:text-lg font-normal;

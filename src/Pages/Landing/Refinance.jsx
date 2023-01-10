@@ -1,14 +1,9 @@
-const Works = () => {
+const Refinance = () => {
   return (
     <div className="wrapper mt-[100px]">
-      <div className="contain xl:flex-row flex-col justify-between items-center gap-10">
-        <img
-          src="/works.png"
-          className="object-contain w-full max-w-[640px]"
-          alt=""
-        />
+      <div className="contain xl:flex-row flex-col-reverse justify-between items-center gap-10">
         <div className="flex xl:max-w-[640px] justify-start items-center text-center sm:text-left sm:items-start flex-col">
-          <h2 className="title mb-3">How it works</h2>{" "}
+          <h2 className="title mb-3">Need Refinancing or a loan?</h2>{" "}
           <p className="sub">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore Lorem ipsum dolor sit amet,
@@ -28,9 +23,14 @@ const Works = () => {
             Learn More
           </button>
         </div>
+        <img
+          src="/refinance.png"
+          className="object-contain w-full max-w-[540px]"
+          alt=""
+        />
       </div>
     </div>
   );
 };
 
-export default Works;
+export default Refinance;
