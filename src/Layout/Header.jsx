@@ -32,6 +32,7 @@ const Header = () => {
             duration={500}
             onSetInactive={() => setActiveLink("")}
             onSetActive={() => setActiveLink("home")}
+            onClick={() => setHeaderToggle(false)}
           >
             {activeLink === "home" && (
               <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
@@ -47,6 +48,7 @@ const Header = () => {
             duration={500}
             onSetInactive={() => setActiveLink("")}
             onSetActive={() => setActiveLink("sell")}
+            onClick={() => setHeaderToggle(false)}
           >
             {activeLink === "sell" && (
               <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
@@ -62,6 +64,7 @@ const Header = () => {
             onSetInactive={() => setActiveLink("")}
             duration={500}
             onSetActive={() => setActiveLink("refinance")}
+            onClick={() => setHeaderToggle(false)}
           >
             {activeLink === "refinance" && (
               <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
@@ -77,6 +80,7 @@ const Header = () => {
             smooth={true}
             duration={500}
             onSetActive={() => setActiveLink("loan")}
+            onClick={() => setHeaderToggle(false)}
           >
             {activeLink === "loan" && (
               <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
