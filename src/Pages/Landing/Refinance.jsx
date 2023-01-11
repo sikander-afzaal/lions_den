@@ -1,6 +1,6 @@
 const Refinance = () => {
   return (
-    <div className="wrapper mt-[100px]">
+    <div id="refinance" className="wrapper mt-[100px]">
       <div className="contain xl:flex-row flex-col-reverse justify-between items-center gap-10">
         <div className="flex xl:max-w-[640px] justify-start items-center text-center sm:text-left sm:items-start flex-col">
           <h2 className="title mb-3">Need Refinancing or a loan?</h2>{" "}
@@ -19,7 +19,7 @@ const Refinance = () => {
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore
           </p>{" "}
-          <button className="rounded-full mt-10 w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960]  hover:bg-transparent hover:text-black cursor-pointer transition-all duration-300 text-lg font-bold h ">
+          <button className="rounded-full mt-10 w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960]  hover:bg-transparent hover:text-black cursor-pointer transition-all duration-300 text-lg font-bold">
             Learn More
           </button>
         </div>

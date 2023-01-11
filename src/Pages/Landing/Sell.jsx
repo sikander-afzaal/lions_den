@@ -1,6 +1,9 @@
 const Sell = () => {
   return (
-    <div className="wrapper mt-[50px] md:mt-[100px] py-[50px] md:py-[100px] bg-[#F9F2EE]">
+    <div
+      id="sell"
+      className="wrapper mt-[50px] md:mt-[100px] py-[50px] md:py-[100px] bg-[#F9F2EE]"
+    >
       <div className="contain xl:flex-row flex-col justify-between items-center gap-[30px] xl:gap-[20px]">
         <div className="grid xl:max-w-[800px] grid-cols-1 md:grid-cols-2 grid-rows-2 gap-[30px]">
           <div className="flex justify-start items-start gap-3 bg-brownGr rounded-[10px] border-[5px] border-solid border-[#AF6B3C26] p-5">

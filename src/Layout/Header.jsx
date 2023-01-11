@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
+  const [activeLink, setActiveLink] = useState("home");
   return (
     <div className="wrapper fixed top-0 bg-white z-50 left-0 shadow-lg">
       {headerToggle && (
@@ -17,42 +19,70 @@ const Header = () => {
           alt=""
         />
         <nav
-          className={`flex md:overflow-y-visible overflow-y-auto justify-start md:p-0 py-[6rem] px-[3rem] items-center sm:items-start md:flex-row flex-col z-[99] md:items-center gap-[50px] md:gap-5 lg:gap-[50px] md:static fixed top-0 ${
+          className={`flex nav md:overflow-y-visible overflow-y-auto justify-start md:p-0 py-[6rem] px-[3rem] items-center sm:items-start md:flex-row flex-col z-[99] md:items-center gap-[50px] md:gap-5 lg:gap-[50px] md:static fixed top-0 ${
             headerToggle ? "right-0" : "-right-[900px]"
           } transition-all duration-1000 w-full max-w-full sm:max-w-[400px] h-full bg-black md:bg-transparent md:h-auto md:max-w-none md:w-auto`}
         >
-          <a
-            onClick={() => setHeaderToggle(false)}
-            href="#"
-            className="text-white md:text-darkBrown text-lg font-medium relative"
+          <Link
+            activeClass="activeLink"
+            to="home"
+            spy={true}
+            offset={-200}
+            smooth={true}
+            duration={500}
+            onSetInactive={() => setActiveLink("")}
+            onSetActive={() => setActiveLink("home")}
           >
-            <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
+            {activeLink === "home" && (
+              <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
+            )}
             Home
-          </a>
-          <a
-            onClick={() => setHeaderToggle(false)}
-            href="#"
-            className="text-white md:text-black text-lg font-medium relative"
+          </Link>
+          <Link
+            activeClass="activeLink"
+            to="sell"
+            spy={true}
+            offset={-200}
+            smooth={true}
+            duration={500}
+            onSetInactive={() => setActiveLink("")}
+            onSetActive={() => setActiveLink("sell")}
           >
-            <span className="absolute left-0 top-[130%] bg-transparent h-[3px] w-full"></span>
+            {activeLink === "sell" && (
+              <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
+            )}
             Selling
-          </a>
-          <a
-            onClick={() => setHeaderToggle(false)}
-            href="#"
-            className="text-white md:text-black text-lg font-medium relative"
+          </Link>
+          <Link
+            activeClass="activeLink"
+            to="refinance"
+            spy={true}
+            offset={-200}
+            smooth={true}
+            onSetInactive={() => setActiveLink("")}
+            duration={500}
+            onSetActive={() => setActiveLink("refinance")}
           >
-            <span className="absolute left-0 top-[130%] bg-transparent h-[3px] w-full"></span>
+            {activeLink === "refinance" && (
+              <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
+            )}
             Refinance
-          </a>
-          <a
-            onClick={() => setHeaderToggle(false)}
-            href="#"
-            className="text-white md:text-black text-lg font-medium relative"
+          </Link>
+          <Link
+            activeClass="activeLink"
+            to="loan"
+            spy={true}
+            offset={-200}
+            onSetInactive={() => setActiveLink("")}
+            smooth={true}
+            duration={500}
+            onSetActive={() => setActiveLink("loan")}
           >
-            <span className="absolute left-0 top-[130%] bg-transparent h-[3px] w-full"></span>
+            {activeLink === "loan" && (
+              <span className="absolute left-0 top-[130%] bg-darkBrown h-[3px] w-full"></span>
+            )}
             Loan
-          </a>
+          </Link>
         </nav>
         <div className="flex justify-start items-center gap-4">
           <button className="rounded-full bg-black text-white border-2 border-solid border-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer w-[120px] sm:w-[204px] h-[45px] sm:h-[50px] font-bold text-sm sm:text-lg">

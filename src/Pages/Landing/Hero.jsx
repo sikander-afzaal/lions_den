@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="wrapper mt-[150px] lg:mt-[180px]">
+    <div id="home" className="wrapper mt-[150px] lg:mt-[180px]">
       <div className="contain lg:flex-row flex-col justify-between items-center gap-[40px] lg:gap-5">
         <div className="flex w-full max-w-[600px] justify-start items-center lg:items-start flex-col lg:gap-[55px] gap-[30px]">
           <div className="flex justify-start items-center text-center lg:text-left lg:items-start flex-col gap-3">
