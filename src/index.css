@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
+  .title_question {
+    @apply text-black font-bold text-center text-[25px] sm:text-[36px];
+  }
+  .nextBtn {
+    @apply flex justify-center items-center text-center w-full max-w-[300px] text-white cursor-pointer bg-[#C58960] h-[60px] rounded-md border-none text-xl mt-[80px] font-semibold;
+  }
+  .disabledBtn {
+    @apply flex justify-center items-center text-center w-full max-w-[300px] text-[#949494] cursor-not-allowed bg-[#E9E9E9] h-[60px] rounded-md border-none text-xl mt-[80px] font-semibold;
+  }
   .wrapper {
     @apply flex justify-center items-center flex-col w-full;
   }
@@ -28,6 +37,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 .review-slider {
   padding-bottom: 50px !important;

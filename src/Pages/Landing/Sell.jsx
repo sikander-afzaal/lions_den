@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Sell = () => {
   return (
     <div
@@ -66,9 +68,12 @@ const Sell = () => {
             adipiscing maecenas. Sed nullam sodales nunc posuere amet ut. Eu non
             egestas morbi velit eleifend commodo. Id eu etiam libero habitasse.
           </p>
-          <button className="rounded-full  w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960]  hover:bg-transparent hover:text-black cursor-pointer transition-all duration-300 text-lg font-bold ">
+          <Link
+            to={"/questions"}
+            className="rounded-full flex justify-center items-center  w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960]  hover:bg-transparent hover:text-black cursor-pointer transition-all duration-300 text-lg font-bold "
+          >
             Get an Offer
-          </button>
+          </Link>
         </div>
       </div>
     </div>

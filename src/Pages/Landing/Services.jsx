@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Services = () => {
   return (
     <div className="wrapper bg-[#F9F2EE] py-[70px] xl:py-[126px] mt-[80px] xl:mt-[140px]">
@@ -36,9 +38,12 @@ const Services = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore
             </p>{" "}
-            <button className="rounded-full mt-3 w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960] hover:bg-transparent cursor-pointer transition-all duration-300 text-lg font-bold h ">
+            <Link
+              to={"/questions"}
+              className="rounded-full flex justify-center items-center mt-3 w-[217px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960] hover:bg-transparent cursor-pointer transition-all duration-300 text-lg font-bold h "
+            >
               Get an Offer
-            </button>
+            </Link>
           </div>{" "}
           <div className="flex justify-start flex-col max-w-[412px] text-center items-center gap-5 py-[45px] px-5">
             <img

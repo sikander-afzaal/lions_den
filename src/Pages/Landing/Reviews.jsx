@@ -64,8 +64,8 @@ const Reviews = () => {
         >
           {DATA.map((elem, idx) => {
             return (
-              <SplideSlide>
-                <ReviewBox {...elem} key={idx + "review"} />
+              <SplideSlide key={idx + "review" + elem.review}>
+                <ReviewBox {...elem} />
               </SplideSlide>
             );
           })}

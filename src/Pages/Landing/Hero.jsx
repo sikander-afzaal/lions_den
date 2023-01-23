@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <div id="home" className="wrapper mt-[150px] lg:mt-[180px]">
@@ -23,9 +25,12 @@ const Hero = () => {
                 className="border-0 h-full w-full outline-0 text-black text-lg"
                 placeholder="Search by address"
               />
-              <button className="rounded-full min-w-[120px] sm:min-w-[150px] xl:min-w-[200px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960] hover:bg-transparent cursor-pointer transition-all duration-300 text-sm sm:text-lg font-bold hover:text-[#C58960] ">
+              <Link
+                to="/questions"
+                className="rounded-full flex justify-center items-center min-w-[120px] sm:min-w-[150px] xl:min-w-[200px] h-[40px] sm:h-[50px] bg-[#C58960] text-white border-[1px] border-solid border-[#C58960] hover:bg-transparent cursor-pointer transition-all duration-300 text-sm sm:text-lg font-bold hover:text-[#C58960] "
+              >
                 Get an Offer
-              </button>
+              </Link>
             </div>
           </div>
         </div>
