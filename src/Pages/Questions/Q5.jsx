@@ -9,7 +9,7 @@ const Q5 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
-    questions: { Q5 },
+    questions: { Q5, Q1 },
   } = useSelector((state) => state.questionsState);
   //radio btn state
   const [selection, setSelection] = useState(
@@ -37,7 +37,9 @@ const Q5 = () => {
   return (
     <div className="flex justify-center items-center flex-col gap-5">
       <h2 className="title_question">
-        Does your client's home have a basement?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "Does your home have a basement?"
+          : "Does your client's home have a basement?"}
       </h2>
       <div className="flex justify-center items-center flex-col w-full gap-4 ">
         <label

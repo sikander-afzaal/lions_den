@@ -7,7 +7,7 @@ import QuestionsCheckBox from "../../Components/QuestionsCheckBox";
 const Q8 = () => {
   const dispatch = useDispatch();
   const {
-    questions: { Q8 },
+    questions: { Q8, Q1 },
   } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
   const [formState, setFormState] = useState(
@@ -48,7 +48,9 @@ const Q8 = () => {
   return (
     <div className="flex justify-center items-center flex-col gap-5">
       <h2 className="title_question">
-        Do any of these apply to your client's home?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "Do any of these apply to your home?"
+          : "Do any of these apply to your client's home?"}
       </h2>
       <p className="mb-3 text-center">
         This helps us determine whether we can make an offer for your client's

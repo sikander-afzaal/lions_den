@@ -14,10 +14,13 @@ import Q8 from "./Pages/Questions/Q8";
 import Q9 from "./Pages/Questions/Q9";
 import Q10 from "./Pages/Questions/Q10";
 import Contact from "./Pages/Questions/Contact";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <Routes>
         <Route element={<Landing />} path="/" />

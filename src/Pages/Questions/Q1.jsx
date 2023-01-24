@@ -98,7 +98,14 @@ const Q1 = () => {
                 },
               })
             );
-            navigate("/questions/q2");
+            if (
+              selection === "I am the owner of this home" ||
+              selection === "Other"
+            ) {
+              navigate("/questions/q3");
+            } else {
+              navigate("/questions/q2");
+            }
           } else if (selection === "Other" && describe !== "") {
             dispatch(
               addQuestion({
@@ -109,7 +116,14 @@ const Q1 = () => {
                 },
               })
             );
-            navigate("/questions/q2");
+            if (
+              selection === "I am the owner of this home" ||
+              selection === "Other"
+            ) {
+              navigate("/questions/q3");
+            } else {
+              navigate("/questions/q2");
+            }
           } else return;
         }}
         className={`${

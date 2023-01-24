@@ -8,13 +8,15 @@ const Q6 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
-    questions: { Q6 },
+    questions: { Q6, Q1 },
   } = useSelector((state) => state.questionsState);
   const [selection, setSelection] = useState(Q6?.answer ? Q6.answer : "");
   return (
     <div className="flex justify-start items-center gap-5 flex-col w-full">
       <h2 className="title_question">
-        What kind of countertops does your client's kitchen have?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "What kind of countertops does your kitchen have?"
+          : "What kind of countertops does your client's kitchen have?"}
       </h2>
       <div className="flex justify-start items-start flex-col w-full gap-5">
         <QuestionsRadioBtn

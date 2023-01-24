@@ -6,7 +6,7 @@ import { addQuestion } from "../../store/questionsSlice";
 const Q7 = () => {
   const dispatch = useDispatch();
   const {
-    questions: { Q7 },
+    questions: { Q7, Q1 },
   } = useSelector((state) => state.questionsState);
   const [selection, setSelection] = useState(Q7?.answer ? Q7.answer.HOA : "No");
   const [formState, setFormState] = useState(
@@ -39,7 +39,9 @@ const Q7 = () => {
   return (
     <div className="flex justify-center items-center flex-col gap-5">
       <h2 className="title_question">
-        Is your client's home part of a homeowner’s association (HOA)?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "Is your home part of a homeowner’s association (HOA)?"
+          : "Is your client's home part of a homeowner’s association (HOA)?"}
       </h2>
       <div className="flex justify-center items-center flex-col w-full gap-4 ">
         <label
@@ -185,10 +187,10 @@ const Q7 = () => {
           className="flex border-2 border-solid border-[#dedede] rounded-md justify-start items-center gap-3 w-full cursor-pointer p-5 h-[72px]"
         >
           <input
-            onChange={() => setSelection("no")}
+            onChange={() => setSelection("No")}
             type="radio"
             id="no"
-            checked={selection === "no"}
+            checked={selection === "No"}
             className="accent-darkBrown w-[13px] "
             name="basement"
           />
@@ -220,7 +222,9 @@ const Q7 = () => {
               })
             );
           }
-          navigate("/questions/q8");
+          if (selection) {
+            navigate("/questions/q8");
+          }
         }}
         className="nextBtn"
       >

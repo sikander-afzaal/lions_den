@@ -8,7 +8,7 @@ import { addQuestion } from "../../store/questionsSlice";
 const Q4 = () => {
   const dispatch = useDispatch();
   const {
-    questions: { Q4 },
+    questions: { Q4, Q1 },
   } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
   const [infoSelected, setInfoSelected] = useState(false);
@@ -35,7 +35,9 @@ const Q4 = () => {
   return (
     <div className="flex justify-start items-center gap-5 flex-col w-full">
       <h2 className="title_question">
-        Do we have your client's home details right?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "Do we have your home details right?"
+          : "Do we have your client's home details right?"}
       </h2>
       <div className="flex justify-start items-start flex-col w-full gap-7">
         <DropDown

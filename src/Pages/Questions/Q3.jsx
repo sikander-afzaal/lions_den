@@ -7,14 +7,16 @@ import { addQuestion } from "../../store/questionsSlice";
 const Q3 = () => {
   const dispatch = useDispatch();
   const {
-    questions: { Q3 },
+    questions: { Q3, Q1 },
   } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
   const [selection, setSelection] = useState(Q3?.answer ? Q3.answer : "");
   return (
     <div className="flex justify-start items-center gap-5 flex-col w-full">
       <h2 className="title_question">
-        What best describes your client's home?
+        {Q1.answer.other === true || Q1.answer === "I am the owner of this home"
+          ? "What best describes your home?"
+          : "What best describes your client's home?"}
       </h2>
       <p className="text-base text-center mb-8 text-black">
         This question helps us select comps when preparing your client's offer.
