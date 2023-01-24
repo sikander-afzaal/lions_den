@@ -12,9 +12,11 @@ export const questionsSlice = createSlice({
     setAddress: (state, action) => {
       state.address = action.payload;
     },
+
     reset: (state) => {
       state.questions = {};
       state.address = "";
+      state.phoneNo = "";
     },
     addQuestion: (state, action) => {
       if (state.questions.hasOwnProperty(action.payload.qNumber)) {

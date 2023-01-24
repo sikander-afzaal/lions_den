@@ -11,10 +11,15 @@ const Contact = () => {
   const { questions, address } = useSelector((state) => state.questionsState);
 
   const [email, setEmail] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const sendingEmail = async () => {
     const message = `
    <h4>Address:</h4>
     ${address ? address : "Did not add"}
+      <br />
+   <h4>Phone Number:</h4>
+    ${phoneNumber}
       <br />
 
        <h4> ${questions.Q1.heading}</h4>
@@ -117,6 +122,7 @@ const Contact = () => {
     
     <br />
     `;
+    setLoader(true);
     emailjs
       .send(
         "service_76ncpyo",
@@ -127,11 +133,13 @@ const Contact = () => {
       .then(
         () => {
           toast.success("Submitted");
-          navigate("/");
           dispatch(reset());
+          navigate("/");
+          setLoader(false);
         },
         () => {
           toast.error("An error occured");
+          setLoader(false);
         }
       );
   };
@@ -165,11 +173,36 @@ const Contact = () => {
           className="w-full rounded-md border-2 pl-4 border-solid border-[#dedede] outline-none h-[60px]"
         />
       </div>
+      <div className="flex justify-start items-start flex-col gap-2 w-full">
+        <label htmlFor="phone" className="text-base text-black font-semibold ">
+          Phone Number <span className="text-red-700">*</span>
+        </label>
+        <input
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          type="text"
+          id="phone"
+          placeholder="Phone Number"
+          value={phoneNumber}
+          className="w-full rounded-md border-2 pl-4 border-solid border-[#dedede] outline-none h-[60px]"
+        />
+      </div>
       <button
-        onClick={sendingEmail}
-        className={email === "" ? "disabledBtn" : "nextBtn"}
+        onClick={() => {
+          if (!email) {
+            toast.warning("Please enter email");
+          } else if (!phoneNumber) {
+            toast.warning("Please enter phone number");
+          } else if (email && phoneNumber) {
+            sendingEmail();
+          }
+        }}
+        className={!email && !phoneNumber ? "disabledBtn" : "nextBtn"}
       >
-        Continue
+        {loader ? (
+          <img src="/loader.gif" className="w-[60px] object-contain" alt="" />
+        ) : (
+          "Continue"
+        )}
       </button>
     </div>
   );
