@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   questions: {},
-  address: "Not added",
+  address: "",
 };
 
 export const questionsSlice = createSlice({
@@ -14,6 +14,7 @@ export const questionsSlice = createSlice({
     },
     reset: (state) => {
       state.questions = {};
+      state.address = "";
     },
     addQuestion: (state, action) => {
       if (state.questions.hasOwnProperty(action.payload.qNumber)) {

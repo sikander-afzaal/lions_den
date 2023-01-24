@@ -14,7 +14,7 @@ const Contact = () => {
   const sendingEmail = async () => {
     const message = `
    <h4>Address:</h4>
-    ${address}
+    ${address ? address : "Did not add"}
       <br />
 
        <h4> ${questions.Q1.heading}</h4>
