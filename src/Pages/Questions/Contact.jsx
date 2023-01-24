@@ -17,7 +17,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const sendingEmail = async () => {
     const message = `
-       <h4>1) ${questions.Q1.heading}</h4>
+       <h4> ${questions.Q1.heading}</h4>
 
         ${
           questions.Q1.answer.other
@@ -26,21 +26,25 @@ const Contact = () => {
         }
       <br />
 
-       <h4>2) ${questions.Q2.heading}</h4>
+      ${
+        questions.Q2
+          ? ` <h4>2) ${questions.Q2.heading}</h4>
    
        MLS ID: ${questions.Q2.answer.mls} ${
-      questions.Q2.answer.brokerageName
-        ? ", Brokerage Name: " + questions.Q2.answer.brokerageName
-        : ""
-    }
-    <br />
+              questions.Q2.answer.brokerageName
+                ? ", Brokerage Name: " + questions.Q2.answer.brokerageName
+                : ""
+            }
+    <br />`
+          : ""
+      }
 
-   <h4>3) ${questions.Q3.heading}</h4>
+   <h4> ${questions.Q3.heading}</h4>
  
         ${questions.Q3.answer}
     <br />
 
-       <h4>4) ${questions.Q4.heading}</h4>
+       <h4> ${questions.Q4.heading}</h4>
         <ul>
         <li>Beds: ${questions.Q4.answer.beds}</li>
         <li>Full Bathrooms: ${questions.Q4.answer.fullBathrooms}</li>
@@ -55,7 +59,7 @@ const Contact = () => {
         </ul>
     <br />
 
-     <h4>5) ${questions.Q5.heading}</h4>
+     <h4> ${questions.Q5.heading}</h4>
      ${
        questions.Q5.answer.basement === "No"
          ? "Basement: No"
@@ -68,18 +72,18 @@ const Contact = () => {
      }
      <br />
 
-     <h4>6) ${questions.Q6.heading}</h4>
+     <h4> ${questions.Q6.heading}</h4>
      <p>${questions.Q6.answer}</p>
      <br />
 
-     <h4>7) ${questions.Q7.heading}</h4>
+     <h4> ${questions.Q7.heading}</h4>
      <p>HOA: ${questions.Q7.answer.HOA}</p>
      <p>Age Restricted: ${questions.Q7.answer.ageRestricted}</p>
      <p>Gated: ${questions.Q7.answer.gated}</p>
      <p>Guard: ${questions.Q7.answer.guard}</p>
      <br />
 
-     <h4>8) ${questions.Q8.heading}</h4>
+     <h4> ${questions.Q8.heading}</h4>
      <p>Leased or financed solar panels: ${questions.Q8.answer.leasedSolar}</p>
      <p>Known foundation Issues: ${questions.Q8.answer.foundationIssues}</p>
      <p>Fire damage: ${questions.Q8.answer.fireDamage}</p>
@@ -90,11 +94,11 @@ const Contact = () => {
      <p>Mobile or manufactured home: ${questions.Q8.answer.mobile}</p>
         <br />
 
-        <h4>9) ${questions.Q9.heading}</h4>
+        <h4> ${questions.Q9.heading}</h4>
       <p>${questions.Q9.answer}</p>
         <br />
 
-        <h4>10) ${questions.Q10.heading}</h4>
+        <h4> ${questions.Q10.heading}</h4>
       ${
         questions.Q10.answer.selection
           ? `
