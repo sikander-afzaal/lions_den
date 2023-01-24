@@ -115,10 +115,10 @@ const Contact = () => {
     `;
     emailjs
       .send(
-        "service_mhzx49l",
-        "template_xl0gtmr",
+        "service_35vqw1p",
+        "template_hk3ifee",
         { from_name: email, message },
-        "5FzKpFg6Ck-d1otwx"
+        "CDPkbNSijuI-GNT_n"
       )
       .then(
         () => {
