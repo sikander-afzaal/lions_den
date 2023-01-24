@@ -107,7 +107,7 @@ const Contact = () => {
       `
           : `
       <p>Other</p>
-      ${questions.Q9.answer.otherOption}
+      ${questions.Q10.answer.otherOption}
       `
       }
     
