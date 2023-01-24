@@ -1,12 +1,28 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionsRadioBtn from "../../Components/QuestionsRadioBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q10 = () => {
+  const dispatch = useDispatch();
+  const {
+    questions: { Q10 },
+  } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
-  const [selection, setSelection] = useState("");
-  const [radioSource, setRadioSource] = useState("");
-  const [other, setOther] = useState("");
+  const [selection, setSelection] = useState(
+    Q10?.answer && !Q10?.answer?.other
+      ? Q10.answer.selection
+      : Q10?.answer?.other
+      ? "Other"
+      : ""
+  );
+  const [radioSource, setRadioSource] = useState(
+    Q10?.answer?.radioSource ? Q10.answer.radioSource : ""
+  );
+  const [other, setOther] = useState(
+    Q10?.answer?.other ? Q10?.answer?.otherOption : ""
+  );
   useEffect(() => {
     if (selection !== "Other") {
       setOther("");
@@ -172,6 +188,42 @@ const Q10 = () => {
       <button
         onClick={() => {
           if (selection) {
+            if (selection !== "Other") {
+              if (selection !== "Radio / Audio") {
+                dispatch(
+                  addQuestion({
+                    qNumber: "Q10",
+                    qDetails: {
+                      heading: "How did your client first hear about Opendoor?",
+                      answer: { selection: selection },
+                    },
+                  })
+                );
+              } else {
+                dispatch(
+                  addQuestion({
+                    qNumber: "Q10",
+                    qDetails: {
+                      heading: "How did your client first hear about Opendoor?",
+                      answer: {
+                        radioSource: radioSource,
+                        selection: selection,
+                      },
+                    },
+                  })
+                );
+              }
+            } else {
+              dispatch(
+                addQuestion({
+                  qNumber: "Q10",
+                  qDetails: {
+                    heading: "How did your client first hear about Opendoor?",
+                    answer: { other: true, otherOption: other },
+                  },
+                })
+              );
+            }
             navigate("/questions/contact");
           } else {
             return;

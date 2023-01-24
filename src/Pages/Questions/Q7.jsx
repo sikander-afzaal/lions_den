@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q7 = () => {
-  const [selection, setSelection] = useState("No");
-  const [formState, setFormState] = useState({
-    ageRestricted: false,
-    gated: false,
-    guard: false,
-    none: false,
-  });
+  const dispatch = useDispatch();
+  const {
+    questions: { Q7 },
+  } = useSelector((state) => state.questionsState);
+  const [selection, setSelection] = useState(Q7?.answer ? Q7.answer.HOA : "No");
+  const [formState, setFormState] = useState(
+    Q7?.answer.HOA
+      ? {
+          ageRestricted: Q7.answer.ageRestricted,
+          gated: Q7.answer.gated,
+          guard: Q7.answer.guard,
+          none: Q7.answer.none,
+        }
+      : {
+          ageRestricted: false,
+          gated: false,
+          guard: false,
+          none: false,
+        }
+  );
   const navigate = useNavigate();
   useEffect(() => {
     if (selection !== "yes") {
@@ -182,6 +197,29 @@ const Q7 = () => {
       </div>
       <button
         onClick={() => {
+          if (selection === "No") {
+            dispatch(
+              addQuestion({
+                qNumber: "Q7",
+                qDetails: {
+                  heading:
+                    "Is your client's home part of a homeowner’s association (HOA)?",
+                  answer: { HOA: selection },
+                },
+              })
+            );
+          } else {
+            dispatch(
+              addQuestion({
+                qNumber: "Q7",
+                qDetails: {
+                  heading:
+                    "Is your client's home part of a homeowner’s association (HOA)?",
+                  answer: { HOA: selection, ...formState },
+                },
+              })
+            );
+          }
           navigate("/questions/q8");
         }}
         className="nextBtn"

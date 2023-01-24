@@ -1,20 +1,30 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addQuestion } from "../../store/questionsSlice";
 import QuestionsCheckBox from "../../Components/QuestionsCheckBox";
 
 const Q8 = () => {
+  const dispatch = useDispatch();
+  const {
+    questions: { Q8 },
+  } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({
-    leasedSolar: false,
-    foundationIssues: false,
-    fireDamage: false,
-    wellWater: false,
-    septic: false,
-    asbestos: false,
-    horse: false,
-    mobile: false,
-    none: false,
-  });
+  const [formState, setFormState] = useState(
+    Q8?.answer
+      ? { ...Q8.answer }
+      : {
+          leasedSolar: false,
+          foundationIssues: false,
+          fireDamage: false,
+          wellWater: false,
+          septic: false,
+          asbestos: false,
+          horse: false,
+          mobile: false,
+          none: false,
+        }
+  );
   const inputHandler = (e) => {
     const { name, checked } = e.target;
     if (name === "none") {
@@ -104,7 +114,21 @@ const Q8 = () => {
           checked={formState.none}
         />
       </div>
-      <button onClick={() => navigate("/questions/q9")} className="nextBtn">
+      <button
+        onClick={() => {
+          dispatch(
+            addQuestion({
+              qNumber: "Q8",
+              qDetails: {
+                heading: "Do any of these apply to your client's home?",
+                answer: { ...formState },
+              },
+            })
+          );
+          navigate("/questions/q9");
+        }}
+        className="nextBtn"
+      >
         Next
       </button>
     </div>

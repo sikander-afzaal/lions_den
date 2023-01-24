@@ -1,13 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionsInputBox from "../../Components/QuestionsInputBox";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q2 = () => {
+  const dispatch = useDispatch();
+  const {
+    questions: { Q2 },
+  } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({
-    mls: "",
-    brokerageName: "",
-  });
+  const [formState, setFormState] = useState(
+    Q2?.answer
+      ? { ...Q2.answer }
+      : {
+          mls: "",
+          brokerageName: "",
+        }
+  );
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setFormState((prev) => {
@@ -36,6 +46,15 @@ const Q2 = () => {
       <button
         onClick={() => {
           if (formState.mls === "") return;
+          dispatch(
+            addQuestion({
+              qNumber: "Q2",
+              qDetails: {
+                heading: "Let's verify your agent info",
+                answer: { ...formState },
+              },
+            })
+          );
           navigate("/questions/q3");
         }}
         className={formState.mls !== "" ? "nextBtn" : "disabledBtn"}

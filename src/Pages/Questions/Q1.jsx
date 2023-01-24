@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionsRadioBtn from "../../Components/QuestionsRadioBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q1 = () => {
-  const [selection, setSelection] = useState("owner");
-  const [describe, setDescribe] = useState("");
+  const dispatch = useDispatch();
+  const {
+    questions: { Q1 },
+  } = useSelector((state) => state.questionsState);
+  const [selection, setSelection] = useState(
+    !Q1?.answer.other
+      ? Q1?.answer
+      : Q1?.answer.other
+      ? "Other"
+      : "I am the owner of this home"
+  );
+  const [describe, setDescribe] = useState(
+    Q1?.answer.other ? Q1?.answer.otherOption : ""
+  );
   const navigate = useNavigate();
   useEffect(() => {
-    if (selection !== "other") {
+    if (selection !== "Other") {
       setDescribe("");
     }
   }, [selection]);
@@ -74,11 +88,29 @@ const Q1 = () => {
       </div>
       <button
         onClick={() => {
-          if (selection !== "Other" || describe !== "") {
+          if (selection !== "Other") {
+            dispatch(
+              addQuestion({
+                qNumber: "Q1",
+                qDetails: {
+                  heading: "What is your relationship to this home?",
+                  answer: selection,
+                },
+              })
+            );
             navigate("/questions/q2");
-          } else {
-            return;
-          }
+          } else if (selection === "Other" && describe !== "") {
+            dispatch(
+              addQuestion({
+                qNumber: "Q1",
+                qDetails: {
+                  heading: "What is your relationship to this home?",
+                  answer: { other: true, otherOption: describe },
+                },
+              })
+            );
+            navigate("/questions/q2");
+          } else return;
         }}
         className={`${
           selection !== "Other" || describe !== "" ? "nextBtn" : "disabledBtn"

@@ -7,10 +7,22 @@ const initialState = {
 export const questionsSlice = createSlice({
   name: "questions",
   initialState,
-  reducers: {},
+  reducers: {
+    addQuestion: (state, action) => {
+      if (state.questions.hasOwnProperty(action.payload.qNumber)) {
+        state.questions[action.payload.qNumber] = {
+          ...action.payload.qDetails,
+        };
+      } else {
+        state.questions[action.payload.qNumber] = {
+          ...action.payload.qDetails,
+        };
+      }
+    },
+  },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = questionsSlice.actions;
+export const { addQuestion } = questionsSlice.actions;
 
 export default questionsSlice.reducer;

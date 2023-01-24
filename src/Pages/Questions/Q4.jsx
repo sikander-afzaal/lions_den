@@ -2,20 +2,30 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DropDown from "../../Components/DropDown";
 import ToolTip from "../../Components/ToolTip";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q4 = () => {
+  const dispatch = useDispatch();
+  const {
+    questions: { Q4 },
+  } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
   const [infoSelected, setInfoSelected] = useState(false);
-  const [formState, setFormState] = useState({
-    beds: 1,
-    fullBathrooms: 1,
-    partialBathrooms: 1,
-    sqFt: "",
-    floors: 1,
-    yearBuilt: 1,
-    pool: "In-ground",
-    coveredParking: "None",
-  });
+  const [formState, setFormState] = useState(
+    Q4?.answer
+      ? { ...Q4.answer }
+      : {
+          beds: 1,
+          fullBathrooms: 1,
+          partialBathrooms: 1,
+          sqFt: "",
+          floors: 1,
+          yearBuilt: 1,
+          pool: "In-ground",
+          coveredParking: "None",
+        }
+  );
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setFormState((prev) => {
@@ -153,6 +163,15 @@ const Q4 = () => {
       </div>
       <button
         onClick={() => {
+          dispatch(
+            addQuestion({
+              qNumber: "Q4",
+              qDetails: {
+                heading: "Do we have your client's home details right?",
+                answer: { ...formState },
+              },
+            })
+          );
           navigate("/questions/q5");
         }}
         className="nextBtn"

@@ -3,6 +3,6 @@ import questionReducer from "./questionsSlice";
 
 export const store = configureStore({
   reducer: {
-    questions: questionReducer,
+    questionsState: questionReducer,
   },
 });

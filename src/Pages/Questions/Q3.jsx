@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionsRadioBtn from "../../Components/QuestionsRadioBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q3 = () => {
+  const dispatch = useDispatch();
+  const {
+    questions: { Q3 },
+  } = useSelector((state) => state.questionsState);
   const navigate = useNavigate();
-  const [selection, setSelection] = useState("");
+  const [selection, setSelection] = useState(Q3?.answer ? Q3.answer : "");
   return (
     <div className="flex justify-start items-center gap-5 flex-col w-full">
       <h2 className="title_question">
@@ -42,6 +48,15 @@ const Q3 = () => {
       <button
         onClick={() => {
           if (selection) {
+            dispatch(
+              addQuestion({
+                qNumber: "Q3",
+                qDetails: {
+                  heading: "What best describes your client's home?",
+                  answer: selection,
+                },
+              })
+            );
             navigate("/questions/q4");
           } else {
             return;

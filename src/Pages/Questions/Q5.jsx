@@ -2,22 +2,32 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionsInputBox from "../../Components/QuestionsInputBox";
 import QuestionsRadioBtn from "../../Components/QuestionsRadioBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../../store/questionsSlice";
 
 const Q5 = () => {
-  const [selection, setSelection] = useState("No");
-  const [formState, setFormState] = useState({
-    finishedSqft: "",
-    unfinishedSqft: "",
-  });
   const navigate = useNavigate();
-  useEffect(() => {
-    if (selection !== "yes") {
-      setFormState({
-        finishedSqft: "",
-        unfinishedSqft: "",
-      });
-    }
-  }, [selection]);
+  const dispatch = useDispatch();
+  const {
+    questions: { Q5 },
+  } = useSelector((state) => state.questionsState);
+  //radio btn state
+  const [selection, setSelection] = useState(
+    Q5?.answer ? Q5?.answer?.basement : "No"
+  );
+  //text field state
+  const [formState, setFormState] = useState(
+    Q5?.answer
+      ? {
+          finishedSqft: Q5.answer.finishedSqft,
+          unfinishedSqft: Q5.answer.unfinishedSqft,
+        }
+      : {
+          finishedSqft: "",
+          unfinishedSqft: "",
+        }
+  );
+
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setFormState((prev) => {
@@ -27,7 +37,7 @@ const Q5 = () => {
   return (
     <div className="flex justify-center items-center flex-col gap-5">
       <h2 className="title_question">
-        What is your relationship to this home?
+        Does your client's home have a basement?
       </h2>
       <div className="flex justify-center items-center flex-col w-full gap-4 ">
         <label
@@ -75,6 +85,28 @@ const Q5 = () => {
       </div>
       <button
         onClick={() => {
+          if (selection === "No") {
+            dispatch(
+              addQuestion({
+                qNumber: "Q5",
+                qDetails: {
+                  heading: "Does your client's home have a basement?",
+                  answer: { basement: selection },
+                },
+              })
+            );
+          } else {
+            dispatch(
+              addQuestion({
+                qNumber: "Q5",
+                qDetails: {
+                  heading: "Does your client's home have a basement?",
+                  answer: { basement: selection, ...formState },
+                },
+              })
+            );
+          }
+
           navigate("/questions/q6");
         }}
         className="nextBtn"
