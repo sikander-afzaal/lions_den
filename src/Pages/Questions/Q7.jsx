@@ -205,7 +205,10 @@ const Q7 = () => {
                 qNumber: "Q7",
                 qDetails: {
                   heading:
-                    "Is your client's home part of a homeowner’s association (HOA)?",
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "Is your home part of a homeowner’s association (HOA)?"
+                      : "Is your client's home part of a homeowner’s association (HOA)?",
                   answer: { HOA: selection },
                 },
               })
@@ -216,7 +219,10 @@ const Q7 = () => {
                 qNumber: "Q7",
                 qDetails: {
                   heading:
-                    "Is your client's home part of a homeowner’s association (HOA)?",
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "Is your home part of a homeowner’s association (HOA)?"
+                      : "Is your client's home part of a homeowner’s association (HOA)?",
                   answer: { HOA: selection, ...formState },
                 },
               })

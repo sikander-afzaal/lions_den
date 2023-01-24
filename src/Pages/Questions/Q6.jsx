@@ -59,7 +59,10 @@ const Q6 = () => {
                 qNumber: "Q6",
                 qDetails: {
                   heading:
-                    "What kind of countertops does your client's kitchen have?",
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "What kind of countertops does your kitchen have?"
+                      : "What kind of countertops does your client's kitchen have?",
                   answer: selection,
                 },
               })

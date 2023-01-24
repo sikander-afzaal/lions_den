@@ -92,7 +92,11 @@ const Q5 = () => {
               addQuestion({
                 qNumber: "Q5",
                 qDetails: {
-                  heading: "Does your client's home have a basement?",
+                  heading:
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "Does your home have a basement?"
+                      : "Does your client's home have a basement?",
                   answer: { basement: selection },
                 },
               })
@@ -102,7 +106,11 @@ const Q5 = () => {
               addQuestion({
                 qNumber: "Q5",
                 qDetails: {
-                  heading: "Does your client's home have a basement?",
+                  heading:
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "Does your home have a basement?"
+                      : "Does your client's home have a basement?",
                   answer: { basement: selection, ...formState },
                 },
               })

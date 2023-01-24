@@ -122,7 +122,11 @@ const Q8 = () => {
             addQuestion({
               qNumber: "Q8",
               qDetails: {
-                heading: "Do any of these apply to your client's home?",
+                heading:
+                  Q1.answer.other === true ||
+                  Q1.answer === "I am the owner of this home"
+                    ? "Do any of these apply to your home?"
+                    : "Do any of these apply to your client's home?",
                 answer: { ...formState },
               },
             })

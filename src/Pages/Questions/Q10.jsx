@@ -196,7 +196,11 @@ const Q10 = () => {
                   addQuestion({
                     qNumber: "Q10",
                     qDetails: {
-                      heading: "How did your client first hear about Opendoor?",
+                      heading:
+                        Q1.answer.other === true ||
+                        Q1.answer === "I am the owner of this home"
+                          ? "How did you first hear about Opendoor?"
+                          : "How did your client first hear about Opendoor?",
                       answer: { selection: selection },
                     },
                   })
@@ -206,7 +210,11 @@ const Q10 = () => {
                   addQuestion({
                     qNumber: "Q10",
                     qDetails: {
-                      heading: "How did your client first hear about Opendoor?",
+                      heading:
+                        Q1.answer.other === true ||
+                        Q1.answer === "I am the owner of this home"
+                          ? "How did you first hear about Opendoor?"
+                          : "How did your client first hear about Opendoor?",
                       answer: {
                         radioSource: radioSource,
                         selection: selection,
@@ -220,7 +228,11 @@ const Q10 = () => {
                 addQuestion({
                   qNumber: "Q10",
                   qDetails: {
-                    heading: "How did your client first hear about Opendoor?",
+                    heading:
+                      Q1.answer.other === true ||
+                      Q1.answer === "I am the owner of this home"
+                        ? "How did you first hear about Opendoor?"
+                        : "How did your client first hear about Opendoor?",
                     answer: { other: true, otherOption: other },
                   },
                 })

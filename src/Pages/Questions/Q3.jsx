@@ -54,7 +54,11 @@ const Q3 = () => {
               addQuestion({
                 qNumber: "Q3",
                 qDetails: {
-                  heading: "What best describes your client's home?",
+                  heading:
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "What best describes your home?"
+                      : "What best describes your client's home?",
                   answer: selection,
                 },
               })

@@ -61,7 +61,11 @@ const Q9 = () => {
               addQuestion({
                 qNumber: "Q9",
                 qDetails: {
-                  heading: "How soon is your client looking to sell?",
+                  heading:
+                    Q1.answer.other === true ||
+                    Q1.answer === "I am the owner of this home"
+                      ? "How soon are you looking to sell?"
+                      : "How soon is your client looking to sell?",
                   answer: selection,
                 },
               })
