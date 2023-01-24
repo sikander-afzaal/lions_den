@@ -6,6 +6,7 @@ import { setAddress } from "../../store/questionsSlice";
 
 const ConfirmModal = ({ setModal, address }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <>
       <div
@@ -30,7 +31,10 @@ const ConfirmModal = ({ setModal, address }) => {
             Yes
           </button>
           <button
-            onClick={() => setModal(false)}
+            onClick={() => {
+              dispatch(setAddress(""));
+              setModal(false);
+            }}
             className="bg-transparent w-full sm:max-w-[150px] h-[50px] rounded-md border-2 border-[#C58960] border-solid hover:bg-[#C58960] font-semibold text-lg text-black hover:text-white transition-all duration-300"
           >
             No
