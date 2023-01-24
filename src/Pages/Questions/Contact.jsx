@@ -9,11 +9,7 @@ const Contact = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { questions } = useSelector((state) => state.questionsState);
-  const [emailObject, setEmailObject] = useState({
-    to_name: "",
-    from_name: "",
-    reply_to: "",
-  });
+
   const [email, setEmail] = useState("");
   const sendingEmail = async () => {
     const message = `
@@ -121,7 +117,7 @@ const Contact = () => {
       .send(
         "service_mhzx49l",
         "template_xl0gtmr",
-        { ...emailObject, message },
+        { from_name: email, message },
         "5FzKpFg6Ck-d1otwx"
       )
       .then(
