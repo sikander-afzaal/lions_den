@@ -8,11 +8,15 @@ import { reset } from "../../store/questionsSlice";
 const Contact = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { questions } = useSelector((state) => state.questionsState);
+  const { questions, address } = useSelector((state) => state.questionsState);
 
   const [email, setEmail] = useState("");
   const sendingEmail = async () => {
     const message = `
+   <h4>Address:</h4>
+    ${address}
+      <br />
+
        <h4> ${questions.Q1.heading}</h4>
 
         ${

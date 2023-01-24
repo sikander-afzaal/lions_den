@@ -2,12 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   questions: {},
+  address: "",
 };
 
 export const questionsSlice = createSlice({
   name: "questions",
   initialState,
   reducers: {
+    setAddress: (state, action) => {
+      state.address = action.payload;
+    },
     reset: (state) => {
       state.questions = {};
     },
@@ -26,6 +30,6 @@ export const questionsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addQuestion, reset } = questionsSlice.actions;
+export const { addQuestion, reset, setAddress } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
