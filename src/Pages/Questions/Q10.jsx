@@ -53,12 +53,6 @@ const Q10 = () => {
           name="hear"
           label="Word of mouth"
         />
-        <QuestionsRadioBtn
-          selection={selection}
-          setSelection={setSelection}
-          name="hear"
-          label="Word of mouth"
-        />
         <div
           className={`flex border-2 border-solid flex-col border-[#dedede] rounded-md justify-start items-start gap-4 w-full cursor-pointer p-5 ${
             selection === "Radio / Audio" ? "h-auto" : "h-[72px]"
@@ -120,6 +114,12 @@ const Q10 = () => {
           setSelection={setSelection}
           name="hear"
           label="Online ad"
+        />{" "}
+        <QuestionsRadioBtn
+          selection={selection}
+          setSelection={setSelection}
+          name="hear"
+          label="Homebuilder"
         />
         <QuestionsRadioBtn
           selection={selection}

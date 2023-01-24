@@ -115,7 +115,7 @@ const Contact = () => {
     `;
     emailjs
       .send(
-        "service_35vqw1p",
+        "service_76ncpyo",
         "template_hk3ifee",
         { from_name: email, message },
         "CDPkbNSijuI-GNT_n"
