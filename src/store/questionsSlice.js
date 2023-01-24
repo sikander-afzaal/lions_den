@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   questions: {},
-  address: "",
+  address: "Not added",
 };
 
 export const questionsSlice = createSlice({
