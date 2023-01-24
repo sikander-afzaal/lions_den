@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import QuestionsCheckBox from "../../Components/QuestionsCheckBox";
 
 const Q8 = () => {
   const navigate = useNavigate();
@@ -44,135 +45,64 @@ const Q8 = () => {
         home. You can choose a few.
       </p>
       <div className="flex gap-4 justify-start items-start flex-col w-full">
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.leasedSolar}
-            onChange={inputHandler}
-            name="leasedSolar"
-            id="leased"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label htmlFor="leased" className="font-semibold">
-            Leased or financed solar panels
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.foundationIssues}
-            onChange={inputHandler}
-            name="foundationIssues"
-            id="issues"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="issues">
-            Known foundation Issues <br />{" "}
-            <span className="font-normal text-sm">
-              Excessive cracking, uneven floors
-            </span>
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.fireDamage}
-            onChange={inputHandler}
-            name="fireDamage"
-            id="fire"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="fire">
-            Fire damage
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.wellWater}
-            onChange={inputHandler}
-            name="wellWater"
-            id="water"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="water">
-            Well water <br />{" "}
-            <span className="font-normal text-sm">
-              Your client maintains a well to supply water
-            </span>
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.septic}
-            onChange={inputHandler}
-            name="septic"
-            id="septic"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="septic">
-            Septic system <br />{" "}
-            <span className="font-normal text-sm">
-              Separate from municipal sewage
-            </span>
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.asbestos}
-            onChange={inputHandler}
-            name="asbestos"
-            id="asbestos"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="asbestos">
-            Asbestos siding
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.horse}
-            onChange={inputHandler}
-            name="horse"
-            id="horse"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="horse">
-            Horse property <br />{" "}
-            <span className="font-normal text-sm">
-              Livestock live on property
-            </span>
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.mobile}
-            onChange={inputHandler}
-            name="mobile"
-            id="mobile"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="mobile">
-            Mobile or manufactured home
-          </label>
-        </div>
-        <div className="flex justify-start items-center gap-5 w-full p-5 border-2 border-solid border-[#dedede] rounded-md">
-          <input
-            type="checkbox"
-            checked={formState.none}
-            onChange={inputHandler}
-            name="none"
-            id="none"
-            className="accent-darkBrown w-[18px] h-[18px]"
-          />
-          <label className="font-semibold" htmlFor="none">
-            None of the above
-          </label>
-        </div>
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="leasedSolar"
+          label="Leased or financed solar panels"
+          checked={formState.leasedSolar}
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="foundationIssues"
+          label="Known foundation Issues"
+          checked={formState.foundationIssues}
+          smallText="Excessive cracking, uneven floors"
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="fireDamage"
+          label="Fire damage"
+          checked={formState.fireDamage}
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="wellWater"
+          label="Well water"
+          checked={formState.wellWater}
+          smallText="Your client maintains a well to supply water"
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="septic"
+          label="Septic system"
+          checked={formState.septic}
+          smallText="Separate from municipal sewage"
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="asbestos"
+          label="Asbestos siding"
+          checked={formState.asbestos}
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="horse"
+          label="Horse property"
+          checked={formState.horse}
+          smallText="Livestock live on property"
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="mobile"
+          label="Mobile or manufactured home"
+          checked={formState.mobile}
+        />
+        <QuestionsCheckBox
+          inputHandler={inputHandler}
+          name="none"
+          label="None of the above"
+          checked={formState.none}
+        />
       </div>
       <button onClick={() => navigate("/questions/q9")} className="nextBtn">
         Next

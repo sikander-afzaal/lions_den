@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import QuestionsInputBox from "../../Components/QuestionsInputBox";
+import QuestionsRadioBtn from "../../Components/QuestionsRadioBtn";
 
 const Q5 = () => {
   const [selection, setSelection] = useState("No");
   const [formState, setFormState] = useState({
-    finished: "",
-    unfinished: "",
+    finishedSqft: "",
+    unfinishedSqft: "",
   });
   const navigate = useNavigate();
   useEffect(() => {
     if (selection !== "yes") {
       setFormState({
-        finished: "",
-        unfinished: "",
+        finishedSqft: "",
+        unfinishedSqft: "",
       });
     }
   }, [selection]);
-
+  const inputHandler = (e) => {
+    const { name, value } = e.target;
+    setFormState((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
   return (
     <div className="flex justify-center items-center flex-col gap-5">
       <h2 className="title_question">
@@ -26,79 +33,45 @@ const Q5 = () => {
         <label
           htmlFor="yes"
           className={`flex flex-col border-2 border-solid border-[#dedede] rounded-md justify-start items-center gap-8 w-full cursor-pointer p-5 ${
-            selection === "yes" ? "h-auto" : "h-[72px]"
+            selection === "Yes" ? "h-auto" : "h-[72px]"
           }`}
         >
           <div className="flex justify-start gap-3 w-full items-center">
             <input
               type="radio"
-              checked={selection === "yes"}
+              checked={selection === "Yes"}
               id="yes"
-              onChange={() => setSelection("yes")}
+              onChange={() => setSelection("Yes")}
               className="accent-darkBrown w-[13px] "
               name="basement"
             />
             <p className="text-base text-black font-semibold ">Yes</p>
           </div>
-          {selection === "yes" && (
+          {selection === "Yes" && (
             <>
-              <div className="flex justify-start items-start flex-col gap-2 w-full">
-                <label
-                  htmlFor="finished"
-                  className="text-base text-black font-semibold "
-                >
-                  Finished sq.ft
-                </label>
-                <input
-                  onChange={(e) =>
-                    setFormState((prev) => {
-                      return { ...prev, finished: e.target.value };
-                    })
-                  }
-                  type="text"
-                  id="finished"
-                  placeholder="#,### ft²"
-                  value={formState.finished}
-                  className="w-full rounded-md border-2 pl-3 border-solid border-[#dedede] outline-none h-[50px]"
-                />
-              </div>
-              <div className="flex justify-start items-start flex-col gap-2 w-full">
-                <label
-                  htmlFor="unfinished"
-                  className="text-base text-black font-semibold "
-                >
-                  Unfinished sq.ft
-                </label>
-                <input
-                  onChange={(e) =>
-                    setFormState((prev) => {
-                      return { ...prev, unfinished: e.target.value };
-                    })
-                  }
-                  type="text"
-                  id="unfinished"
-                  placeholder="#,### ft²"
-                  value={formState.unfinished}
-                  className="w-full rounded-md border-2 pl-3 border-solid border-[#dedede] outline-none h-[50px]"
-                />
-              </div>
+              <QuestionsInputBox
+                label="Finished sq.ft"
+                name="finishedSqft"
+                placeholder="#,### ft²"
+                inputHandler={inputHandler}
+                value={formState.finishedSqft}
+              />
+              <QuestionsInputBox
+                label="Unfinished sq.ft"
+                name="unfinishedSqft"
+                placeholder="#,### ft²"
+                inputHandler={inputHandler}
+                value={formState.unfinishedSqft}
+              />
             </>
           )}
         </label>
-        <label
-          htmlFor="no"
-          className="flex border-2 border-solid border-[#dedede] rounded-md justify-start items-center gap-3 w-full cursor-pointer p-5 h-[72px]"
-        >
-          <input
-            onChange={() => setSelection("no")}
-            type="radio"
-            id="no"
-            checked={selection === "no"}
-            className="accent-darkBrown w-[13px] "
-            name="basement"
-          />
-          <p className="text-base text-black font-semibold ">No</p>
-        </label>
+        <QuestionsRadioBtn
+          selection={selection}
+          setSelection={setSelection}
+          label="No"
+          name="basement"
+        />
       </div>
       <button
         onClick={() => {
